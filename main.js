@@ -52,6 +52,9 @@ var setup = function( ){
     // adding it to the scene  
     scene.add( cylinder ); 
 
+    // changing its rotation
+    cylinder.rotation.z =Math.PI/2;
+
     // set the position of the camera
     camera.position.z = 30;
 

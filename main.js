@@ -5,9 +5,11 @@ var height;
 // scene and camera
 var scene ;
 var camera;
-
+var controls;
 // rendu
 var renderer;
+
+
 
 // object
 var cylinder;
@@ -24,6 +26,7 @@ var setup = function( ){
     width = window.innerWidth;
     height = window.innerHeight;
 
+    
     // configuration de la scene
     scene = new THREE.Scene( );
     camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
@@ -31,7 +34,9 @@ var setup = function( ){
     // configuration du rendu
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
-
+    
+    // controls
+    controls = new THREE.OrbitControls( camera, renderer.domElement )
 
     // cylinder
     // create the shape
@@ -60,10 +65,7 @@ var update = function( ){
     height = window.innerHeight;
 
     // animations
-    //cylinder.position.z = -20;
-    cylinder.rotation.x += 0.01;
-    //cylinder.rotation.y += 0.02;
-    cylinder.rotation.z += 0.01;
+
 };
 
 // render ( aka drawing on the screen)

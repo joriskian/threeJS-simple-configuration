@@ -11,8 +11,9 @@ var renderer;
 
 
 
-// object
+// objects
 var cylinder;
+var cube;
 
 // fix resizing
 window.addEventListener('resize', function(){
@@ -36,24 +37,30 @@ var setup = function( ){
     document.body.appendChild( renderer.domElement );
     
     // controls
-    controls = new THREE.OrbitControls( camera, renderer.domElement )
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-    // cylinder
     // create the shape
-    var geometry = new THREE.CylinderGeometry( 1, 1, 5, 16 );
+    // cylinder
+    var g_cylinder = new THREE.CylinderGeometry( 1, 1, 5, 16 );
     // create a material, color or image texture
-    var material = new THREE.MeshBasicMaterial( 
+    var m_cylinder = new THREE.MeshBasicMaterial( 
         { color: 0xffff00, wireframe: false } // yellow
-
     );
+    // cube
+    var g_cube = new THREE.CubeGeometry( 1, 1, 1 );
+    var m_cube = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false});
     // bind the material to the mesh
-    cylinder = new THREE.Mesh( geometry, material );
+    cylinder = new THREE.Mesh( g_cylinder, m_cylinder );
+    cube = new THREE.Mesh(g_cube, m_cube);
 
     // adding it to the scene  
-    scene.add( cylinder ); 
+    scene.add( cylinder, cube ); 
 
     // set the position of the camera
     camera.position.z = 30;
+    // modify object
+    cylinder.rotation.z = Math.PI/2;
+    cube.position.x = 20;
 
 
 };
